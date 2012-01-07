@@ -1,4 +1,10 @@
 Project::Application.routes.draw do
+  resources :shared_articles
+
+  resources :articles
+
+  resources :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
