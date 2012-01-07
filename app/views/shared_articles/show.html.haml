@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Blurb:
+  = @shared_article.blurb
+
+= link_to 'Edit', edit_shared_article_path(@shared_article)
+\|
+= link_to 'Back', shared_articles_path
