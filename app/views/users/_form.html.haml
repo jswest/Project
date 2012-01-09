@@ -8,21 +8,21 @@
 
   %table
     %tr
-      %td
+      %th
         = f.label :email
       %td
         = f.text_field :email
     %tr
-      %td
+      %th
         = f.label :firstname
       %td
         = f.text_field :firstname
     %tr
-      %td
+      %th
         = f.label :lastname
       %td
         = f.text_field :lastname
     %tr
       %td
-        = f.submit 'Save'
+        = f.submit 'Save', :class => 'submit'
       %td

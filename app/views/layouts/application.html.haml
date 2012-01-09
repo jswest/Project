@@ -1,17 +1,19 @@
 <!doctype html>
 %html
-	%head
-		%title
-			THE PROJECT
-		= stylesheet_link_tag "application"
-		= javascript_include_tag "application"
-		= csrf_meta_tags
-		
-	%body
-		
-		#page-wrapper
-			#page
-		
-				= render :partial => "shared/primary_header"
-		
-				= yield
+  %head
+    %title
+      THE PROJECT
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    
+  %body
+    
+    #page-wrapper
+      #page
+    
+        = render :partial => "shared/primary_header"
+  
+        %section#main-area-wrapper
+          %section#main-area  
+            = yield

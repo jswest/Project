@@ -4,6 +4,15 @@
 	clear: both
 
 
+p,
+li,
+td,
+th,
+input,
+label
+	font-family: $p_fonts
+
+
 h1
 	color: $h1_color
 	font-family: $h1_fonts
@@ -14,9 +23,26 @@ h1
 	@include align_center
 	width: $full-width
 	
-table
-	border: 1px solid black
 td,
 th
-	border: 1px dotted black
 	padding: 5px
+
+
+form
+	input
+		background-color: white
+		border: 0
+		border-radius: 5px
+		border-top: 1px solid rgb(100,100,100)
+		border-left: 1px solid rgb(100,100,100)
+		font-size: 15px
+		line-height: 15px
+		padding: 5px
+		width: 250px
+		height: 15px
+	input.submit
+		background-color: white
+		font-size: 12px
+		line-height: 20px
+		width: auto
+		height: 25px

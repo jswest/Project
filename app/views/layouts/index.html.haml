@@ -7,7 +7,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     
-  %body#index
+  %body#root
     
     #page-wrapper
       #page
@@ -17,5 +17,7 @@
             %hgroup
               %h1
                 THE PROJECT
-    
-        = yield
+        
+        %section#main-area-wrapper
+          %section#main-area
+            = yield
