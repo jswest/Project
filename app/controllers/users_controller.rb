@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def show
     if is_signed_in?
-      @user = User.find( currend_user.id )
+      @user = User.find( current_user.id )
     else
       @user = User.find( params[:id] )
     end

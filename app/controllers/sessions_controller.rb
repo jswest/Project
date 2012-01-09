@@ -2,24 +2,25 @@ class SessionsController < ApplicationController
   
   def new
     if is_signed_in?
-      redirect_to :controller => 'user', :action => 'show'
+      redirect_to :controller => "users", :action => :show, :id => @current_user.id
     end
   end
   
   def create
-    user = User.where( :username => params[:username] )
+    user = User.find_by_email( params[:sessions][:email] )
     if user.nil?
-      flash.now[:error] = "Invalid username, dude."
+      flash.now[:error] = "Invalid email, dude."
       render 'new'
     else
       sign_in( user )
-      redirect to user
+      redirect_to :controller => "users", :action => :show, :id => @current_user.id
     end
   end
   
   def destroy
     sign_out
-    redirect_to "/"
+    redirect_to :controller => "sessions", :action => :new
+
   end
   
 end

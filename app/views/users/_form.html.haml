@@ -7,7 +7,13 @@
           %li= msg
 
   .field
-    = f.label :username
-    = f.text_field :username
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :firstname
+    = f.text_field :firstname
+  .field
+    = f.label :lastname
+    = f.text_field :lastname
   .actions
-    = f.submit 'Save'
+    = f.submit 'Create User'
