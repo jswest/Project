@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+  before_filter :current_user
+  
   # SESSIONS STUFF
   def sign_in( user )
     cookies[:remember_token] = { :value => user.id, :expires => 20.years.from_now.utc }

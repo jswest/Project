@@ -6,14 +6,23 @@
         - @user.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :firstname
-    = f.text_field :firstname
-  .field
-    = f.label :lastname
-    = f.text_field :lastname
-  .actions
-    = f.submit 'Create User'
+  %table
+    %tr
+      %td
+        = f.label :email
+      %td
+        = f.text_field :email
+    %tr
+      %td
+        = f.label :firstname
+      %td
+        = f.text_field :firstname
+    %tr
+      %td
+        = f.label :lastname
+      %td
+        = f.text_field :lastname
+    %tr
+      %td
+        = f.submit 'Save'
+      %td
