@@ -7,9 +7,9 @@ class SessionsController < ApplicationController
   end
   
   def create
-    user = User.find_by_username( params[:sessions][:username] )
+    user = User.find_by_email( params[:sessions][:email] )
     if user.nil?
-      flash.now[:error] = "Invalid username, dude."
+      flash.now[:error] = "Invalid email, dude."
       render 'new'
     else
       sign_in( user )
