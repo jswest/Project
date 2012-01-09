@@ -1,0 +1,18 @@
+@import mixins
+
+body#index
+	header#primary-index-header-wrapper,
+	header#primary-index-header
+		background-color: $header_color
+		width: $full_width
+		height: 200px
+		hgroup
+			h1
+				font-size: 125px
+				line-height: 200px
+				text-align: center
+				width: $full-width
+		
+	section.index-section
+		float: left
+		width: ($full_width / 2)
