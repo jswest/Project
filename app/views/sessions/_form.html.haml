@@ -1,0 +1,7 @@
+= form_for( :sessions, :url => { :controller => 'sessions', :action => 'create'} ) do |f|
+	.form-field
+		= f.label :username
+		= f.text_field :username
+	.form-field#submit-button
+		= f.submit "Log in"
+	

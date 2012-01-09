@@ -9,4 +9,9 @@
 		
 	%body
 		
-		= yield
+		#page-wrapper
+			#page
+		
+				= render :partial => "shared/primary_header"
+		
+				= yield

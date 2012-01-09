@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   
   # SESSIONS STUFF
   def sign_in( user )
-    cookies[:remember_token] = { :value => user.id }
+    cookies[:remember_token] = { :value => user.id, :expires => 20.years.from_now.utc }
     self.current_user = user
   end
   
