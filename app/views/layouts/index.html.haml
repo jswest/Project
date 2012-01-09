@@ -1,0 +1,21 @@
+<!doctype html>
+%html
+  %head
+    %title
+      THE PROJECT
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    
+  %body#index
+    
+    #page-wrapper
+      #page
+        
+        %header#primary-index-header-wrapper
+          %header#primary-index-header
+            %hgroup
+              %h1
+                THE PROJECT
+    
+        = yield
