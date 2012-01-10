@@ -2,7 +2,7 @@ class SharedArticlesController < ApplicationController
   # GET /shared_articles
   # GET /shared_articles.json
   def index
-    @shared_articles = SharedArticle.all
+    @shared_articles = @current_user.shared_articles
 
     respond_to do |format|
       format.html # index.html.erb
