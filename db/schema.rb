@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120109163026) do
+ActiveRecord::Schema.define(:version => 20120110180546) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -31,7 +31,16 @@ ActiveRecord::Schema.define(:version => 20120109163026) do
     t.text     "blurb"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "shared_by"
+    t.integer  "article_id"
   end
+
+  create_table "shared_articles_users", :id => false, :force => true do |t|
+    t.integer "shared_article_id", :null => false
+    t.integer "user_id",           :null => false
+  end
+
+  add_index "shared_articles_users", ["shared_article_id", "user_id"], :name => "index_shared_articles_users_on_shared_article_id_and_user_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "username"
