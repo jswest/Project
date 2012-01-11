@@ -105,8 +105,10 @@ def load_articles
         db_article.first_paragraph = article.body
         db_article.url = article.url
       
-        # Save it!
-        db_article.save!
+        # Save it! (unless it doesn't have a first paragraph)
+        if db_article.first_paragraph.present?
+          db_article.save!
+        end
       
         # Pause for a hot sec so that nytimes doesn't sue us
         sleep 1
