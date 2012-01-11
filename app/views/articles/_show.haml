@@ -1,0 +1,17 @@
+%p#notice= notice
+
+%p
+  %a{ :href => @article.url }
+    = @article.title
+- if @article.abstract.present?
+  %p
+    %b Abstract:
+    = @article.abstract
+- if @article.full_text.present?
+  %p
+    %b Full text:
+    = @article.full_text
+
+= link_to 'Edit', edit_article_path(@article) if @current_user && @article.user_id && @article.user_id == @current_user.id
+\|
+= link_to 'Back', articles_path

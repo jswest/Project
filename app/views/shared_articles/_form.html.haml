@@ -1,13 +1,23 @@
-= form_for @shared_article do |f|
+%h2
+  Share this article
+%h3
+  = link_to @article.title, @article.url
+= form_for @shared_article, :remote => true, :id => "new_shared_article" do |f|
   -if @shared_article.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@shared_article.errors.count, "error")} prohibited this shared_article from being saved:"
+      %h2= "#{pluralize(@shared_article.errors.count, "error")} prohibited this article from being shared:"
       %ul
         - @shared_article.errors.full_messages.each do |msg|
           %li= msg
 
   .field
+    = f.label :share_with
+    = f.text_field :users, :value => ""
+  .field
     = f.label :blurb
     = f.text_area :blurb
+  .field
+    = f.hidden_field :user_id, :value => @current_user ? @current_user.id : 1
+    = f.hidden_field :article_id, :value => @article.id
   .actions
-    = f.submit 'Save'
+    = f.submit 'Share'

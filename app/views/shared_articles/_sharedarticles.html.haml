@@ -2,7 +2,7 @@
 %table
   %tr
     
-  - @current_user.shared_articles.order("created_at DESC").limit(10).each do |shared_article|
+  - @current_user.received_articles.order("created_at DESC").limit(10).each do |shared_article|
     %tr
       %td= link_to shared_article.article.title, shared_article.article.url
       %td= link_to shared_article.shared_by.firstname, shared_article.shared_by

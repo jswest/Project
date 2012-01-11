@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20120110213427) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "sessions", :force => true do |t|
