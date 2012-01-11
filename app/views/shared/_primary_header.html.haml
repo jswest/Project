@@ -7,11 +7,13 @@
       %ul
         - if @current_user.present?
           %li
-            = link_to "Your Page ", :controller => "users", :action => :show
+            = link_to "My Page ", :controller => "users", :action => :show
           %li
-            = link_to "| Edit Info | ", :controller => "users", :action => :edit
+            = link_to " | My Saved ", :controller => "users", :action => :mysaved
           %li
-            = link_to "Log Out", :controller => "sessions", :action => :destroy
+            = link_to " | Edit Info ", :controller => "users", :action => :edit
+          %li
+            = link_to " | Log Out", :controller => "sessions", :action => :destroy
         - else
           %li
             = link_to "Log In | ", :controller => "sessions", :action => :new

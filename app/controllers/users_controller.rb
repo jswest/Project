@@ -28,6 +28,20 @@ class UsersController < ApplicationController
     end
     
   end
+  
+  
+  
+  def myshared
+    
+    @current_user = User.find( current_user.id )
+  end
+  
+  
+  
+  def mysaved
+    
+    @current_user = User.find( current_user.id )
+  end
 
 
 
