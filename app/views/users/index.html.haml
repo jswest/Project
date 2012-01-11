@@ -16,6 +16,11 @@
         %td= user.email
         %td= user.firstname
         %td= user.lastname
+        %td.option
+          = form_for Friendship.new do |t|
+            = t.hidden_field :user_id, :value => @current_user.id
+            = t.hidden_field :friend_id, :value => user.id
+            = t.submit "Befriend"
         %td.option= link_to 'Show', user
         %td.option= link_to 'Edit', edit_user_path(user)
         %td.option= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete

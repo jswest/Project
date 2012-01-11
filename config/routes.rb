@@ -1,4 +1,8 @@
 Project::Application.routes.draw do
+  resources :friendships
+
+  resources :groups
+
   resources :saved_articles
   resources :shared_articles
   resources :articles
