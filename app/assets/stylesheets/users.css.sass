@@ -2,18 +2,26 @@
 
 body#root
 	#page-wrapper
+		border-radius: 25px
+		margin: 50px auto
 		padding-bottom: 20px
+		
 
 
 	header#primary-index-header-wrapper,
 	header#primary-index-header
-		background-color: $header_color
+		background-color: $root_header_color
+		border-top-left-radius: 25px
+		border-top-right-radius: 25px
 		width: $full_width
 		height: 200px
 		hgroup
 			h1
-				font-size: 125px
-				line-height: 200px
+				color: white
+				font-family: "bebas neue"
+				font-size: 225px
+				font-weight: 100
+				line-height: 225px
 				text-align: center
 				width: $full-width
 		
@@ -21,9 +29,13 @@ body#root
 		float: left
 		width: ($full_width / 2)
 		h1
-			font-size: 20px
-			line-height: 40px
+			color: $root_header_color
+			font-size: 40px
+			line-height: 60px
 			text-align: center
+		form
+			margin-left: 20px
+			width: ($full_width / 2) - 60px
 		table
 			@include align_center
 			
