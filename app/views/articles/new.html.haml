@@ -1,5 +1,8 @@
-%h1 New article
+%h1#notice New article
 
-= render 'form'
+#form-pane
+  = render 'form'
+  #share{:style => "display: none"}
+
 
 = link_to 'Back', articles_path

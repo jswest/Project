@@ -4,7 +4,6 @@ class Article < ActiveRecord::Base
   validates_presence_of :url
   
   has_and_belongs_to_many :tags
-  
-  has_many :shared_articles
+  belongs_to :user
 
 end

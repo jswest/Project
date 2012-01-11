@@ -4,7 +4,7 @@ class SharedArticlesController < ApplicationController
   
   #force_ssl
   def index
-    @shared_articles = @current_user.shared_articles
+    @shared_articles = @current_user.received_articles
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,11 +42,12 @@ class SharedArticlesController < ApplicationController
   # POST /shared_articles
   # POST /shared_articles.json
   def create
-    @shared_article = SharedArticle.new(params[:shared_article])
+    @shared_article = SharedArticle.create_share(params[:shared_article])
 
     respond_to do |format|
       if @shared_article.save
-        format.html { redirect_to @shared_article, notice: 'Shared article was successfully created.' }
+        @article = Article.new
+        format.html { render :partial => 'articles/form', notice: 'Article was succesfully shared!' }
         format.json { render json: @shared_article, status: :created, location: @shared_article }
       else
         format.html { render action: "new" }
