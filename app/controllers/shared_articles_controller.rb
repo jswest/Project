@@ -1,6 +1,8 @@
 class SharedArticlesController < ApplicationController
   # GET /shared_articles
   # GET /shared_articles.json
+  
+  #force_ssl
   def index
     @shared_articles = @current_user.shared_articles
 

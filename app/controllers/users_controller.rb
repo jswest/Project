@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   
+  # force_ssl
   def index
     @users = User.all
 
@@ -13,6 +14,8 @@ class UsersController < ApplicationController
 
 
   def show
+    
+    @this_user = User.find_by_id(params[:id])
     if is_signed_in?
       @user = User.find( current_user.id )
     else
@@ -50,10 +53,9 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.create(params[:user])
-
+    @user = User.new(params[:user])
     respond_to do |format|
-      if @user.save
+      if @user.save!
         sign_in( @user )
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }

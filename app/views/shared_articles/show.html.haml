@@ -1,7 +1,7 @@
 %p#notice= notice
 
 %p
-  %b Blurb:
+  %b= @shared_article.shared_by.firstname + " says:"
   = @shared_article.blurb
 
 = link_to 'Edit', edit_shared_article_path(@shared_article)

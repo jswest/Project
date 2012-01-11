@@ -1,17 +1,19 @@
 %header#primary-header-wrapper
-	%header#primary-header
-		%hgroup
-			%h1
-				THE PROJECT
-		%nav
-			%ul
-				- if @current_user.present?
-					%li
-						= link_to "Your Page", :controller => "users", :action => :show
-					%li
-						= link_to "Log Out", :controller => "sessions", :action => :destroy
-				- else
-					%li
-						= link_to "Log In", :controller => "sessions", :action => :new
-					%li
-						= link_to "Sign Up", :controller => "users", :action => :new
+  %header#primary-header
+    %hgroup
+      %h1
+        THE PROJECT
+    %nav
+      %ul
+        - if @current_user.present?
+          %li
+            = link_to "Your Page ", :controller => "users", :action => :show
+          %li
+            = link_to "| Edit Info | ", :controller => "users", :action => :edit
+          %li
+            = link_to "Log Out", :controller => "sessions", :action => :destroy
+        - else
+          %li
+            = link_to "Log In | ", :controller => "sessions", :action => :new
+          %li
+            = link_to "Sign Up", :controller => "users", :action => :new

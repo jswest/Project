@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  
+  #force_ssl
   # GET /articles
   # GET /articles.json
   def index

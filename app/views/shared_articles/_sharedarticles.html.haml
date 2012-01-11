@@ -1,11 +1,15 @@
-%h1 Shared Articles
+%h1  Shared Articles
 %table
   %tr
     
   - @current_user.shared_articles.order("created_at DESC").limit(10).each do |shared_article|
     %tr
-      %td= link_to shared_article.article.title, shared_article
+      %td= link_to shared_article.article.title, shared_article.article.url
       %td= link_to shared_article.shared_by.firstname, shared_article.shared_by
     %tr
       %td= shared_article.blurb
+    %tr
+      %td= "Share This"
+    %tr
+      %td= raw "-----------------------------"
 %br
