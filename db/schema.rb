@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20120111223939) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.text     "first_paragraph"
   end
 
   create_table "saved_articles", :force => true do |t|

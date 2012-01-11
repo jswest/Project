@@ -8,7 +8,7 @@
     %tr
       %td= saved_article.blurb
     %tr
-      %td= "Share This"
+      %td= link_to "Share This", :controller => "articles", :action => :new, :id => @current_user.id
     %tr
       %td= raw "-----------------------------"
 %br

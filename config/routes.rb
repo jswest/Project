@@ -8,7 +8,6 @@ Project::Application.routes.draw do
   match 'sessions/new' => 'sessions#new'
   match 'sessions/create' => 'sessions#create'
   match 'users/myshared' => 'users#myshared'
-  match 'users/mysaved' => 'users#mysaved'
   
   root :to => 'users#new'
   

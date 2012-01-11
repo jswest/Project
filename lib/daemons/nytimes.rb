@@ -1,4 +1,5 @@
 require './lib/daemons/classes'
+require './lib/daemons/time_massage'
 
 def load_articles
   
@@ -56,16 +57,64 @@ def load_articles
     # to include many, many more fields.
     r.articles.each do |article|
       
-      # Create the new article for the database
-      db_article = Article.new
+      # Check if the article is already in the database, using the url as its
+      # unique indetifier.
+      check_article = Article.find_by_url( article.url )
       
-      # Give it the information
-      db_article.title = article.title
-      db_article.abstract = article.abstract
-      db_article.url = article.url
+      # Create a TimeMassage object to facilitate the comparison between
+      # the NYTimes timestamp and ours.
+      time_massage = TimeMassage.new( article.updated_date )
       
-      # Save it!
-      db_article.save!
+      # Fix the NYTimes timestamp.
+      good_nytimes_time = time_massage.fix_nytimes_time
+      
+      # !If the check article is nil (the article isn't in the database) OR
+      # if the article in the database was updated before the nytimes article...
+      # Then you can procede to add the article into the database.
+      if check_article.nil? || check_article.updated_at < good_nytimes_time
+
+        # Create a new SearchRequest object
+        sr = SearchRequest.new( article.url )
+      
+        # Create the search request query string
+        sr.wrap_values
+        sr.generate_query
+      
+        # Make the query
+        sr.get_some
+      
+        # Break if it fails
+        unless sr.response.is_a?( Net::HTTPOK )
+          Rails.logger.info "No dice. Search request connection failed. Aborting..."
+          break
+        end
+      
+        # Parse the response
+        Rails.logger.info "Parsing search response at #{Time.now}"
+        sr.parse
+      
+        # Give the article a first paragraph
+        article.body = sr.article_body
+      
+        # Create the new article for the database
+        db_article = Article.new
+      
+        # Give it the information
+        db_article.title = article.title
+        db_article.abstract = article.abstract
+        db_article.first_paragraph = article.body
+        db_article.url = article.url
+      
+        # Save it! (unless it doesn't have a first paragraph)
+        if db_article.first_paragraph.present?
+          db_article.save!
+        end
+      
+        # Pause for a hot sec so that nytimes doesn't sue us
+        sleep 1
+      
+      end
+      
     end
     
     # Pause for a hot sec, so that nytimes doesn't sue us
@@ -74,8 +123,5 @@ def load_articles
   end
   
 end
-    
-    
-    
-    
-  
+
+ 
