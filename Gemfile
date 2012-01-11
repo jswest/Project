@@ -30,7 +30,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'capistrano'ss
 
 # To use debugger
-gem 'ruby-debug19', :require => 'ruby-debug'
+# gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test do
   # Pretty printed test output
