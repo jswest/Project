@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  
+  #force_ssl
   # GET /articles
   # GET /articles.json
   def index
@@ -44,11 +46,10 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
-        format.json { render json: @article, status: :created, location: @article }
+        @shared_article = SharedArticle.new
+        format.html { render :partial => "shared_articles/form" }
       else
         format.html { render action: "new" }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
   end

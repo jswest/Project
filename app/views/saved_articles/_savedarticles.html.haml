@@ -1,0 +1,14 @@
+%h1 Saved Articles
+%table
+  %tr
+    
+  -@current_user.saved_articles.order("created_at DESC").limit(10).each do |saved_article|
+    %tr
+      %td= link_to saved_article.article.title, saved_article.article.url
+    %tr
+      %td= saved_article.blurb
+    %tr
+      %td= "Share This"
+    %tr
+      %td= raw "-----------------------------"
+%br

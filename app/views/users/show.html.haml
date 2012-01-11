@@ -1,26 +1,9 @@
 %p#notice= notice
 
-%table
-  %tr
-    %th
-      Email
-    %td
-      = @user.email
-  %tr
-    %th
-      First name
-    %td
-      = @user.firstname
-  %tr
-    %th
-      Last name
-    %td
-      = @user.lastname
-    
 
+-if @this_user == @current_user
+  = render '/shared_articles/sharedarticles'
+-else 
+  = render 'userinfo'
+  = link_to 'Back', @current_user
 
-= link_to 'Edit', edit_user_path(@current_user)
-\|
-= link_to 'Back', users_path
-
-= render '/shared_articles/sharedarticles'

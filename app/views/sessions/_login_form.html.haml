@@ -1,4 +1,6 @@
 = form_for( :sessions, :url => { :controller => 'sessions', :action => 'create'} ) do |f|
+  - flash.each do |k,v|
+    %p= v
   %table
     %tr
       %th
@@ -9,7 +11,7 @@
       %th
         = f.label :password
       %td
-        = f.text_field :password
+        = f.password_field :password
     %tr
       %td
         = f.submit "Log in", :class => 'submit'

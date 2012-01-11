@@ -1,0 +1,17 @@
+%h1 Listing saved_articles
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @saved_articles.each do |saved_article|
+    %tr
+      %td= link_to 'Show', saved_article
+      %td= link_to 'Edit', edit_saved_article_path(saved_article)
+      %td= link_to 'Destroy', saved_article, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Saved article', new_saved_article_path
