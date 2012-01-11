@@ -15,7 +15,7 @@ class TimeMassage
   end
   
   def fix_nytimes_time()
-    good_time = Time.new( @year,@month,@day, @hour,@minute,@second, "#{@offset}" )
+    good_time = Time.new( @year.to_i, @month.to_i, @day.to_i, @hour.to_i, @minute.to_i, @second.to_i, "#{@offset}" )
   end
   
 end

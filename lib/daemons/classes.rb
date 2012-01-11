@@ -141,16 +141,10 @@ class SearchRequest
     @base = "http://api.nytimes.com/svc/search/v1/article?"
     @values = {
       :format       => "json",
-      :query_string => url
+      :query_string => url,
       :rank         => "newest",
       :api_key      => "f8300a015bf72b44258c431610109fcd:6:56122124" 
     }
-    @wrappers = [
-      { :format_wrapper       => "format="},
-      { :query_string_wrapper => "query=url:"},
-      { :rank_wrapper         => "rank=" },
-      { :api_key_wrapper      => "api-key=" }
-    ]
     
   end
   
@@ -159,11 +153,12 @@ class SearchRequest
   # This wrapps the values in the appropraite parts of the query string.
   def wrap_values
     @wrapped_values = {
-      :format = "format=#{@values[:format]}"
-      :query_string = "query=#{@values[:query]}"
-      :rank = "rank=#{@values[:rank]}"
-      :api_key = "api-key#{@values[:api_key]}"
+      :format => "format=#{@values[:format]}&",
+      :query_string => "query=url:#{@values[:query_string]}&",
+      :rank => "rank=#{@values[:rank]}&",
+      :api_key => "api-key=#{@values[:api_key]}"
     }
+  end
   
   
   # GENERATE THE FULL QUERY
@@ -197,6 +192,8 @@ class SearchRequest
       @article_body = result['body']
     
     end
+    
+  end
 
 end
 

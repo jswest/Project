@@ -59,7 +59,7 @@ def load_articles
       
       # Check if the article is already in the database, using the url as its
       # unique indetifier.
-      check_article = Article.find_by_url( "article.url" )
+      check_article = Article.find_by_url( article.url )
       
       # Create a TimeMassage object to facilitate the comparison between
       # the NYTimes timestamp and ours.
@@ -71,7 +71,7 @@ def load_articles
       # !If the check article is nil (the article isn't in the database) OR
       # if the article in the database was updated before the nytimes article...
       # Then you can procede to add the article into the database.
-      if check_article.nil? || check_article.updated_at < good_time.fix_nytimes_time
+      if check_article.nil? || check_article.updated_at < good_nytimes_time
 
         # Create a new SearchRequest object
         sr = SearchRequest.new( article.url )
@@ -102,7 +102,7 @@ def load_articles
         # Give it the information
         db_article.title = article.title
         db_article.abstract = article.abstract
-        db_article.full_text = article.body
+        db_article.first_paragraph = article.body
         db_article.url = article.url
       
         # Save it!
