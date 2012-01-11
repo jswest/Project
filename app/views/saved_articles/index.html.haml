@@ -1,4 +1,4 @@
-%h1 Listing saved_articles
+%h1 Saved Articles
 
 %table
   %tr
@@ -8,9 +8,10 @@
 
   - @saved_articles.each do |saved_article|
     %tr
-      %td= link_to 'Show', saved_article
-      %td= link_to 'Edit', edit_saved_article_path(saved_article)
-      %td= link_to 'Destroy', saved_article, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to saved_article.article.title, saved_article.article.url
+    %tr
+      %td= link_to "Share", :controller => "articles", :action => :new, :id => @current_user.id
+      %td= link_to "Delete", saved_article, :confirm => 'Are you sure?', :method => :delete
 
 %br
 

@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :firstname, :lastname, :password, :password_confirmation
   validates_presence_of :email, :password, :on => :create
   validates_uniqueness_of :email
-  has_and_belongs_to_many :saved_articles, :uniq => true
+  has_many :saved_articles, :class_name => "SavedArticle"
   has_many :articles
   has_and_belongs_to_many :received_articles, :class_name => "SharedArticle"
   has_many :sent_articles, :class_name => "SharedArticle"
