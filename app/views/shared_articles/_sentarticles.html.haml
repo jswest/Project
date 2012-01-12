@@ -1,0 +1,14 @@
+%h1 Sent Articles
+%table
+  %tr
+    
+  # -@current_user.sent_articles.order("created_at DESC").limit(10).each do |sent_article|
+    %tr
+      # %td= link_to sent_article.article.title, sent_article.article.url
+    %tr
+      # %td= sent_article.blurb
+    %tr
+      # %td= link_to "Share Again", :controller => "articles", :action => :new, :id => @current_user.id
+    %tr
+      %td= raw "-----------------------------"
+%br
