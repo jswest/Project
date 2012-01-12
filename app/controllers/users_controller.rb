@@ -21,6 +21,10 @@ class UsersController < ApplicationController
     else
       @user = User.find( params[:id] )
     end
+    @front_page_received_articles = @user.received_articles.limit(2)
+    @front_page_articles = Article.where( :first_paragraph.present? ).limit(3)
+    
+    
 
     respond_to do |format|
       format.html
