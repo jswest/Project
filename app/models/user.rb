@@ -21,6 +21,6 @@ class User < ActiveRecord::Base
     all_friends = []
     self.initiated_friendships.each{|f| all_friends << f.friend} #if confirmed
     self.received_friendships.each{|f| all_friends << f.user}    #if confirmed
-    all_friends
+    all_friends.uniq
   end
 end

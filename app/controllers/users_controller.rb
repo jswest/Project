@@ -11,6 +11,12 @@ class UsersController < ApplicationController
     
   end
 
+  def search
+    respond_to do |format|
+      format.json { render :json => @current_user.friends.map{|u| "#{u.firstname.capitalize if u.firstname} #{u.lastname.capitalize if u.lastname} <#{u.email}>"} }
+    end
+  end
+
 
 
   def show

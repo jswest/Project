@@ -42,7 +42,7 @@ class SharedArticlesController < ApplicationController
   # POST /shared_articles
   # POST /shared_articles.json
   def create
-    @shared_article = SharedArticle.create_share(params[:shared_article])
+    @shared_article = SharedArticle.create_share(params)
 
     respond_to do |format|
       if @shared_article.save

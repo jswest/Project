@@ -7,6 +7,7 @@ Project::Application.routes.draw do
   resources :saved_articles
   resources :shared_articles
   resources :articles
+  match 'users/search' => 'users#search'
   resources :users
 
   match 'sessions/destroy' => 'sessions#destroy'
