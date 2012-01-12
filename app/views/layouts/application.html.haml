@@ -8,13 +8,14 @@
     = csrf_meta_tags
     
   %body
+    = render :partial => "shared/share_this_lightbox"
+    = render :partial => "shared/users_lightbox"
     
     #page-wrapper
       #page
     
         = render :partial => "shared/primary_header"
-        = render :partial => "shared/share_this_lightbox"
-        = render :partial => "shared/users_lightbox"
+
   
         %section#main-area-wrapper
           %section#main-area  
