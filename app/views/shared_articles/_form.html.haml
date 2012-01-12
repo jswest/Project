@@ -1,8 +1,8 @@
 %h2
-  Share this article
+  Share
 %h3
-  = link_to @article.title, @article.url
-= form_for @shared_article, :remote => true, :id => "new_shared_article" do |f|
+  = link_to @article.title, @article.url if @article.present?
+= form_tag "/shared_articles", :remote => true, :id => "new_shared_article", :method => "post" do
   -if @shared_article.errors.any?
     #error_explanation
       %h2= "#{pluralize(@shared_article.errors.count, "error")} prohibited this article from being shared:"
@@ -10,14 +10,31 @@
         - @shared_article.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :share_with
-    = f.text_field :users, :value => ""
-  .field
-    = f.label :blurb
-    = f.text_area :blurb
-  .field
-    = f.hidden_field :user_id, :value => @current_user ? @current_user.id : 1
-    = f.hidden_field :article_id, :value => @article.id
-  .actions
-    = f.submit 'Share'
+  %table
+    %tr
+      %th
+        = label_tag :url
+      %td
+        = text_field_tag :url, @article ? @article.url : ""
+    %tr
+      %th
+        = label_tag :share_with
+      %td
+        = text_field_tag :share_with, ""
+        = hidden_field_tag :users, ""
+    %tr
+      %th
+      %td
+        %ul#shared_with
+    %tr
+      %th
+        = label_tag :blurb
+      %td
+        = text_area_tag :blurb
+    .field
+      = hidden_field_tag :user_id, @current_user ? @current_user.id : 1
+      = hidden_field_tag :article_id, @article ? @article.id : ""
+    %tr
+      %td
+      %td
+        = submit_tag 'Share'

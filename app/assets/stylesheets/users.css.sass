@@ -1,59 +1,93 @@
 @import mixins
 
 body#root
-	#page-wrapper
-		border-radius: 25px
-		margin: 50px auto
-		padding-bottom: 20px
-		
+  #page-wrapper
+    border-radius: 25px
+    margin: 50px auto
+    padding-bottom: 20px
+
+  header#primary-index-header-wrapper,
+  header#primary-index-header
+    background-color: $root_header_color
+    border-top-left-radius: 25px
+    border-top-right-radius: 25px
+    width: $full_width
+    height: 200px
+    hgroup
+      h1
+        color: white
+        font-family: "bebas neue"
+        font-size: 225px
+        font-weight: 100
+        line-height: 225px
+        text-align: center
+        width: $full_width
+    
+  section.index-section
+    float: left
+    width: ($full_width / 2)
+    h1
+      color: $root_header_color
+      font-size: 40px
+      line-height: 60px
+      text-align: center
+    form
+      margin-left: 20px
+      width: ($full_width / 2) - 60px
+    table
+      @include align_center
 
 
-	header#primary-index-header-wrapper,
-	header#primary-index-header
-		background-color: $root_header_color
-		border-top-left-radius: 25px
-		border-top-right-radius: 25px
-		width: $full_width
-		height: 200px
-		hgroup
-			h1
-				color: white
-				font-family: "bebas neue"
-				font-size: 225px
-				font-weight: 100
-				line-height: 225px
-				text-align: center
-				width: $full-width
-		
-	section.index-section
-		float: left
-		width: ($full_width / 2)
-		h1
-			color: $root_header_color
-			font-size: 40px
-			line-height: 60px
-			text-align: center
-		form
-			margin-left: 20px
-			width: ($full_width / 2) - 60px
-		table
-			@include align_center
-			
+      
 body
-	table#users-index
-		@include align-center
-		border: 1px solid black
-		tr,
-		td
-			border: 1px solid black
-		th
-			background-color: black
-			border-left: 1px solid white
-			border-bottom: 1px solid white
-			color: $header-color
-			font-weight: bold
-			text-align: left
-		th:first-child
-			border-left: 1px solid black
-		td.option
-			font-style: italic
+  table#users-index
+    @include align-center
+    border: 1px solid black
+    tr,
+    td
+      border: 1px solid black
+    th
+      background-color: black
+      border-left: 1px solid white
+      border-bottom: 1px solid white
+      color: $header-color
+      font-weight: bold
+      text-align: left
+    th:first-child
+      border-left: 1px solid black
+    td.option
+      font-style: italic
+      
+      
+// FRONT PAGE
+$shared-color: rgb(200,210,220)
+$nytimes-color: rgb(225,225,225)
+section#front-page
+  article
+    border-radius: 25px
+    float: left
+    margin: 20px
+    padding: 20px
+    overflow: auto
+    h1
+      font-size: 50px
+  .one-column
+    width: ($full_width / 3) - 80px
+  .two-column
+    width: (($full_width / 3) * 2) - 80px
+    h1
+      font-size: 50px
+  .three-column
+    width: $full_width - 40px
+  .tall
+    height: 200px
+  .grande
+    height: 340px
+  .venti
+    height: 480px
+  .shared
+    background-color: $shared-color
+  .nytimes
+    background-color: $nytimes-color
+  .alignright
+    @include align_right

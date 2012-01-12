@@ -11,6 +11,12 @@ class UsersController < ApplicationController
     
   end
 
+  def search
+    respond_to do |format|
+      format.json { render :json => @current_user.friends.map{|u| "#{u.firstname.capitalize if u.firstname} #{u.lastname.capitalize if u.lastname} <#{u.email}>"} }
+    end
+  end
+
 
 
   def show
@@ -21,6 +27,10 @@ class UsersController < ApplicationController
     else
       @user = User.find( params[:id] )
     end
+    @front_page_received_articles = @user.received_articles.limit(2)
+    @front_page_articles = Article.where( :first_paragraph.present? ).limit(3)
+    
+    
 
     respond_to do |format|
       format.html
