@@ -1,15 +1,13 @@
-%h1  Shared Articles
-%table
-  %tr
-    
+%h1.shared-articles-header  Shared Articles
+%ol#shared-article-list
   - @current_user.received_articles.order("created_at DESC").limit(10).each do |shared_article|
-    %tr
-      %td= link_to shared_article.article.title, shared_article.article.url
-      %td= link_to shared_article.shared_by.firstname, shared_article.shared_by
-    %tr
-      %td= shared_article.blurb
-    %tr
-      %td= link_to "Share This", :controller => "articles", :action => :new, :id => @current_user.id
-    %tr
-      %td= raw "-----------------------------"
-%br
+    %li.shared-article
+      .close-box x
+      %header
+        %hgroup
+          %h3= link_to "#{shared_article.shared_by.firstname} shared", shared_article.shared_by
+          %h2= link_to shared_article.article.title, shared_article.article.url
+      %p.blurb= shared_article.blurb
+      %footer
+        %p.share-this= link_to "Share This", :controller => "articles", :action => :new, :id => @current_user.id
+  .clear
