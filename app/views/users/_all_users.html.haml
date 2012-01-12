@@ -1,0 +1,3 @@
+%h1 Users
+%ol
+  - Users.find(:all, :order => "TRIM(LOWER(title))")

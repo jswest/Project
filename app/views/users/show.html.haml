@@ -1,7 +1,7 @@
 %p#notice= notice
 
 -if @this_user == @current_user
-  = render '/shared_articles/sharedarticles'
+  = render '/shared_articles/shared_articles'
 -else 
   = render 'userinfo'
   = link_to 'Back', @current_user

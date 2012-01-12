@@ -12,7 +12,6 @@
     %tr
       %td= link_to "Share", :controller => "articles", :action => :new, :id => @current_user.id
       %td= link_to "Delete", saved_article, :confirm => 'Are you sure?', :method => :delete
-
+    %tr
+      %td= raw "-----------------------------"
 %br
-
-= link_to 'New Saved article', new_saved_article_path

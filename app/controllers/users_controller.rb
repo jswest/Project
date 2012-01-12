@@ -29,13 +29,6 @@ class UsersController < ApplicationController
     
   end
   
-  
-  
-  def myshared
-    
-    @current_user = User.find( current_user.id )
-  end
-
 
 
   def new
