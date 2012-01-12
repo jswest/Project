@@ -1,3 +1,8 @@
-%h1 Users
-%ol
-  - Users.find(:all, :order => "TRIM(LOWER(title))")
+%h1.all-users-header Users
+%ol#all-users-list
+  - User.all.each do |user|
+    %li.all-users
+      %header
+        %h2= truncate(user.firstname + " " + user.lastname, :length => 30)
+      %footer
+        %span#share-this-button Share an Article
