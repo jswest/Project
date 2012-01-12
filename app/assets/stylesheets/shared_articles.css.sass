@@ -1,3 +1,53 @@
-// Place all the styles related to the SharedArticles controller here.
-// They will automatically be included in application.css.
-// You can use Sass here: http://sass-lang.com/
+@import mixins
+
+h1.shared-articles-header
+  font-size: 50px
+  margin-bottom: 20px
+  text-align: center
+  
+  
+ol#shared-article-list
+  margin: 0 auto
+  width: ($full-width / 2) - 40px
+  li
+    background-color: $header-color
+    border-radius: 20px
+    margin-bottom: 40px
+    padding: 20px
+    position: relative
+    .close-box
+      background-color: black
+      color: white
+      cursor: pointer
+      font-size: 25px
+      line-height: 30px
+      position: absolute
+      top: -5px
+      right: -5px
+      text-transform: uppercase
+      text-align: center     
+      width: 25px
+      height: 25px
+    h3
+      font-size: 15px
+      text-transform: uppercase
+    h2
+      font-family: "Bebas Neue"
+      font-size: 30px
+      line-height: 30px
+    p.blurb
+      padding: 10px 0
+    p.share-this
+      background-color: black
+      color: white
+      font-size: 13px
+      line-height: 25px
+      padding: 0 5px
+      position: absolute
+      bottom: -30px
+      left: -30px  
+      text-transform: uppercase
+      height: 25px
+      
+      
+      

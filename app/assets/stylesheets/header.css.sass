@@ -1,12 +1,24 @@
 @import mixins
 
-$header_height: 80px
-$header_color: rgb(245,245,245)
+$header_height: 100px
+$hgroup_height: 80px
+$nav_height: 20px
 header#primary-header-wrapper
-	@include align_center
-	background-color: $header_color
-	padding: 10px
-	width: $full_width - 20px
-	height: $header_height
-	
-	
+  @include align_center
+  background-color: $header_color
+  padding: 10px
+  width: $full_width - 20px
+  height: $header_height
+  hgroup
+    height: $hgroup_height
+    h1
+      color: white
+      font-size: 80px
+      line-height: 80px
+  nav
+    height: $nav_height
+    ul
+      li
+        color: rgb(100,100,100)
+        margin-right: 20px
+    

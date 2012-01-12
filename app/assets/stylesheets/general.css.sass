@@ -1,7 +1,7 @@
 @import mixins
 
 .clear
-	clear: both
+  clear: both
 
 
 p,
@@ -10,42 +10,60 @@ td,
 th,
 input,
 label
-	font-family: $p_fonts
+  font-family: $p_fonts
 
 
 h1
-	color: $h1_color
-	font-family: $h1_fonts
-	
-	
+  color: $h1_color
+  font-family: $h1_fonts
+  
+  
 #page-wrapper
-	background-color: rgb(235,235,235)
-	@include align_center
-	width: $full-width
-	
+  background-color: rgb(235,235,235)
+  @include align_center
+  width: $full-width
+  
 td,
 th
-	padding: 5px
+  padding: 5px
 
 
 form
-	background: $form_color
-	border-radius: 20px
-	padding: 10px
-	input
-		background-color: white
-		border: 0
-		border-radius: 5px
-		border-top: 1px solid rgb(100,100,100)
-		border-left: 1px solid rgb(100,100,100)
-		font-size: 15px
-		line-height: 15px
-		padding: 5px
-		width: 250px
-		height: 15px
-	input.submit
-		background-color: white
-		font-size: 12px
-		line-height: 20px
-		width: auto
-		height: 25px
+  background: $form_color
+  border-radius: 20px
+  margin: 0 auto
+  padding: 10px
+  width: ($full_width / 2) - 30px
+  table
+    margin: 0 auto
+  label
+    color: rgb(100,100,100)
+  input
+    background-color: white
+    border: 0
+    border-radius: 5px
+    border-top: 1px solid rgb(100,100,100)
+    border-left: 1px solid rgb(100,100,100)
+    font-size: 15px
+    line-height: 15px
+    padding: 5px
+    width: 250px
+    height: 15px
+  input.submit
+    background-color: white
+    font-size: 12px
+    line-height: 20px
+    width: auto
+    height: 25px
+    
+
+section#main-area-wrapper
+  padding: 20px 0
+    
+header.main-section-header-wrapper
+  height: 60px
+  header.main-section-header
+    h1
+      font-size: 50px
+      line-height: 60px
+      text-align: center

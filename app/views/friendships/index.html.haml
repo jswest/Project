@@ -1,0 +1,21 @@
+%h1 Listing friendships
+
+%table
+  %tr
+    %th User
+    %th Friend
+    %th
+    %th
+    %th
+
+  - @friendships.each do |friendship|
+    %tr
+      %td= friendship.user_id
+      %td= friendship.friend_id
+      %td= link_to 'Show', friendship
+      %td= link_to 'Edit', edit_friendship_path(friendship)
+      %td= link_to 'Destroy', friendship, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Friendship', new_friendship_path
