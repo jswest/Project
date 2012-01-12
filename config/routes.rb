@@ -7,7 +7,7 @@ Project::Application.routes.draw do
   match 'sessions/destroy' => 'sessions#destroy'
   match 'sessions/new' => 'sessions#new'
   match 'sessions/create' => 'sessions#create'
-  match 'users/myshared' => 'users#myshared'
+  match 'shared_articles/sent' => 'shared_articles#sent'
   
   root :to => 'users#new'
   

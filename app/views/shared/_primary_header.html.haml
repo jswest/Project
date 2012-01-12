@@ -11,6 +11,8 @@
           %li
             = link_to " | My Saved ", :controller => "saved_articles", :action => :index, :id => @current_user.id
           %li
+            = link_to " | My Sent ", :controller => "shared_articles", :action => :sent, :id => @current_user.id
+          %li
             = link_to " | Edit Info ", :controller => "users", :action => :edit, :id => @current_user.id
           %li
             = link_to " | Log Out", :controller => "sessions", :action => :destroy

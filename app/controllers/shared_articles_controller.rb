@@ -83,4 +83,7 @@ class SharedArticlesController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+  def sent
+  end
 end
