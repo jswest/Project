@@ -27,7 +27,7 @@ class NewsRequest
   
   # These hold the various changable portions of the query string. All except @section have
   # default values. @section must be passed in on creation of the object
-  attr_accessor :version, :source, :section, :response_key, :api_key
+  attr_accessor :version, :source, :section, :response_type, :api_key
 
   
   # INITIALIZE
