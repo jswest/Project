@@ -1,5 +1,3 @@
-%h2
-  Share
 %h3
   = link_to @article.title, @article.url if @article.present?
 = form_tag "/shared_articles", :remote => true, :id => "new_shared_article", :method => "post" do
@@ -21,11 +19,12 @@
         = label_tag :share_with
       %td
         = text_field_tag :share_with, ""
-        = hidden_field_tag :users, ""
+        = hidden_field_tag :users, @shared_with ? @shared_with.id : ""
     %tr
       %th
       %td
         %ul#shared_with
+          %li= @user.firstname + @user.lastname 
     %tr
       %th
         = label_tag :blurb
@@ -37,4 +36,4 @@
     %tr
       %td
       %td
-        = submit_tag 'Share'
+        = submit_tag 'Share', :class => "submit"

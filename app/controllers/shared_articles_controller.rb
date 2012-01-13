@@ -31,9 +31,13 @@ class SharedArticlesController < ApplicationController
     if params[:article_id].present?
       @article=Article.find(params[:article_id]) rescue nil
     end
+    
+    if params[:user_id].present?
+      @user=User.find(params[:user_id]) rescue nil
+    end
 
     respond_to do |format|
-      format.html{ render "new" } # new.html.erb
+      format.html{ render :partial => "new" } # new.html.erb
       format.json { render json: @shared_article }
     end
   end
