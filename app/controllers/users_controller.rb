@@ -41,12 +41,14 @@ class UsersController < ApplicationController
     @front_page_articles = []
     @received_articles = @user.received_articles.limit(3)
     
-    @received_articles.each do |received_article|
-      @front_page_articles.push( {
-        :shared_by => received_article.shared_by.firstname,
-        :article => received_article.article,
-        :classes => "tall shared"
-      } )
+    if @received_articles.present?
+      @received_articles.each do |received_article|
+        @front_page_articles.push( {
+          :shared_by => received_article.shared_by.firstname,
+          :article => received_article.article,
+          :classes => "tall shared"
+        } )
+      end
     end
     
     while @front_page_articles.length < 7 do

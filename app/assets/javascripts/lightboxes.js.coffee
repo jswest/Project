@@ -15,7 +15,10 @@ $ ->
     $(this).css("display", "none")
     $("users-lightbox").css("display", "none")
     
-  $("#share-this-button").click ->
+  $(".share-this-button").click ->
+    article_id = $(this).parent().attr("article_id")
+    $.get("/shared_articles/new", {article_id: article_id}, -> (data)
+      $("#share-this-lightbox").html(data)
+    )
     $("#share-this-gloss").css( "display", "block" )
     $("#share-this-lightbox").css( "display", "block" )  
-  
