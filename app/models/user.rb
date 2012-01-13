@@ -23,4 +23,18 @@ class User < ActiveRecord::Base
     self.received_friendships.each{|f| all_friends << f.user}    #if confirmed
     all_friends.uniq
   end
+
+  # Override to_json and to_xml to protect hashed passwords
+  # Exclude password info from xml output.
+  def to_xml(options={})
+    options[:except] ||= [:password_digest]
+    super(options)
+  end
+
+  #TODO Make this not a giant security flaw
+  # Exclude password info from json output.
+  def to_json(options={})
+    options[:except] ||= [:password_digest]
+    super(options)
+  end
 end

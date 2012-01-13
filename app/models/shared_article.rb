@@ -11,7 +11,7 @@ class SharedArticle < ActiveRecord::Base
     shared_article.article_id = article.id
     shared_article.blurb = params[:blurb]
     shared_article.shared_by = User.find(params[:user_id])
-    shared_with = params[:users].split(',').map(&:strip).map{|u| User.find(u.to_i)}
+    shared_with = params[:users].split(',').map(&:strip).map{|u| User.find(u.to_i) rescue nil}
     shared_with.each{ |user| shared_article.users << user unless user.nil? }
     return shared_article
   end
