@@ -1,0 +1,104 @@
+//@import mixins
+$full-size: 960px
+$one-third: $full-size / 3
+$two-third: ($full-size / 3) * 2
+$full-plus-one: $full-size + $one-third
+
+$margin-size: 20px
+$padding-size: 20px
+$border-width: 0px
+
+$base-article-color: rgb(200,200,200)
+$shared-article-color: rgb(200,210,220)
+
+$real-one-third: $one-third - ($padding-size * 2) - ($border-width * 2) - ($margin-size * 2)
+$real-two-third: $two-third - ($padding-size * 2) - ($border-width * 2) - ($margin-size * 2)
+$real-full-width: $full-size - ($padding-size * 2) - ($border-width * 2) - ($margin-size * 2)
+$real-full-plus-one: $full-plus-one - ($padding-size * 2) - ($border-width * 2) - ($margin-size * 2)
+
+// DESTROY THIS CODE LATER
+section#front-page
+  background-color: rgb(245,245,245)
+  border: 10px solid rgb(235,235,235)
+  display: block
+  margin: 50px auto
+  position: relative
+  width: $full-size
+  height: $full-plus-one
+
+// STYLING
+.front-page-article-wrapper
+  background-color: $base-article-color
+  border: $border-width solid black
+  border-radius: 20px
+  display: block
+  margin: 20px
+  padding: $padding-size
+  position: absolute
+.shared
+  background-color: rgb(200,210,220)
+
+.short
+  width: $real-one-third
+  height: $real-one-third 
+.tall-horizontal
+  width: $real-two-third
+  height: $real-one-third
+.tall-vertical
+  width: $real-one-third
+  height: $real-two-third
+.grande-horizontal
+  width: $real-full-width
+  height: $real-one-third
+.grande-vertical
+  width: $real-one-third
+  height: $real-full-width
+.venti
+  width: $real-two-third
+  height: $real-two-third
+
+  
+// GRID IDS
+// First row
+#x0y0
+  left: 0
+  top: 0
+#x1y0
+  left: $one-third
+  top: 0
+#x2y0
+  left: $two-third
+  top: 0
+
+// Second row
+#x0y1
+  left: 0
+  top: $one-third
+#x1y1
+  left: $one-third
+  top: $one-third
+#x2y1
+  left: $two-third
+  top: $one-third
+  
+// Third row
+#x0y2
+  left: 0
+  top: $two-third
+#x1y2
+  left: $one-third
+  top: $two-third
+#x2y2
+  left: $two-third
+  top: $two-third
+
+// Forth row
+#x0y3
+  left: 0
+  top: $full-size
+#x1y3
+  left: $one-third
+  top: $full-size
+#x2y3
+  left: $two-third
+  top: $full-size

@@ -67,6 +67,38 @@ class UsersController < ApplicationController
       @user = User.find( params[:id] )
     end
     
+    classes = [
+      "venti",
+      "tall",
+      "tall",
+      "grande-vertical",
+      "grande-horizonal",
+      "tall",
+      "tall"
+    ]
+    
+    @front_page_articles = []
+    @received_articles = @user.received_articles.limit(3)
+    
+    if @received_articles.present?
+      @received_articles.each do |received_article|
+        @front_page_articles.push( {
+          :shared_by => received_article.shared_by.firstname,
+          :article => received_article.article,
+          :classes => "tall shared"
+        } )
+      end
+    end
+    
+    while @front_page_articles.length < 7 do
+      @front_page_articles.push( {
+        :shared_by => "The New York Times", 
+        :article => Article.where( :first_paragraph.present? ).sample,
+        :classes => "tall nytimes tall-nytimes"
+      } )
+    end
+    
+
     @front_page_articles = generate_front_page_articles
 
     respond_to do |format|
