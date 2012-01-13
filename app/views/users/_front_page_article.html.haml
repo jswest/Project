@@ -1,4 +1,4 @@
-%article{ :class => "#{article[:classes]} front-page-article-wrapper", :article_id => article[:article].id }
+%article{ :class => "#{article[:classes]} front-page-article-wrapper", :article_id => article[:article].id, 'data-id' => "#{article[:article].id}" }
   .close-box x
   %article{ :class => "#{article[:classes]} article-guts" }
     %h3= "Shared by #{article[:shared_by]}"

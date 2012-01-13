@@ -8,6 +8,7 @@ Project::Application.routes.draw do
   resources :shared_articles
   resources :articles
   match 'users/search' => 'users#search'
+  match 'users/update_front_page' => 'users#update_front_page', :method => :post
   resources :users
 
   match 'sessions/destroy' => 'sessions#destroy'
