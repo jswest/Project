@@ -1,9 +1,3 @@
 %section#front-page
-  %article.shared.two-column.tall
-    = render :partial => "front_page_shared_article", :object => @front_page_received_articles[0], :as => :shared_article
-  %article.nytimes.one-column.venti.alignright
-    = render :partial => "front_page_nytimes_article", :object => @front_page_articles[0], :as => :nytimes_article
-  %article.shared.one-column.tall
-    = render :partial => "front_page_shared_article", :object => @front_page_received_articles[1], :as => :shared_article
-  %article.nytimes.one-column.tall
-    = render :partial => "front_page_nytimes_article", :object => @front_page_articles[1], :as => :nytimes_article
+  = render :partial => "front_page_article", :collection => @front_page_articles, :as => :article
+
