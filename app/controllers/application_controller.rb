@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by_id( cookies[:remember_token] )
   end
   
+  def all_users
+    @all_users ||= User.all
+  end
+  
   def sign_out
     cookies.delete( :remember_token )
     self.current_user = nil

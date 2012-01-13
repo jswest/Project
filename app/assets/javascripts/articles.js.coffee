@@ -5,7 +5,7 @@ $ ->
   initBindings()
 
 initBindings = () ->
-  $("#new_article")
+  $("form#new_article")
         .bind('ajax:beforeSend', () ->
         )
         .bind('ajax:success', (evt, data) ->
@@ -18,7 +18,7 @@ initBindings = () ->
         .bind('ajax:complete', () ->
         )
 
-  $("#new_shared_article")
+  $("form#new_shared_article")
     .bind('ajax:beforeSend', () ->
     )
     .bind('ajax:success', (evt, data) ->
