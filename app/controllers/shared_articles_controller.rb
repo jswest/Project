@@ -1,6 +1,16 @@
+include 'net/http'
+
 class SharedArticlesController < ApplicationController
   # GET /shared_articles
   # GET /shared_articles.json
+  
+  
+  def get_title_of_shared_article
+    url = params[:url]
+    uri = URI.parse( url )
+    response = Net::HTTP.get_response( uri )
+  end
+  
   
   #force_ssl
   def index
