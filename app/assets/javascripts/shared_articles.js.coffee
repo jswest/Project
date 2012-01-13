@@ -26,7 +26,8 @@ initBindings = () ->
     source: data
     minLength: 2
     select: (event, ui) ->
-      $("input#users").val($(this).val() + "," + ui.item.value)
+      console.log(ui.item)
+      $("input#users").val($("input#users").val() + "," + ui.item.id)
       $("<li></li>").text(ui.item.value).appendTo("ul#shared_with")
       $("input#share_with").val("")
       return false
