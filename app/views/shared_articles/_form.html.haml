@@ -24,7 +24,7 @@
       %th
       %td
         %ul#shared_with
-          %li= @user.firstname + @user.lastname 
+          %li= @user.firstname + @user.lastname if @user 
     %tr
       %th
         = label_tag :blurb
@@ -37,3 +37,5 @@
       %td
       %td
         = submit_tag 'Share', :class => "submit"
+        
+%span.close-share-box-button Back

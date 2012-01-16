@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   #TODO actually make remember tokens
   def current_user
-    @current_user ||= User.find( cookies[:remember_token] )
+    @current_user ||= User.find( cookies[:remember_token] ) rescue nil
   end
   
   def sign_out

@@ -5,6 +5,7 @@ class FrontPageController < ApplicationController
 
   def index
     @front_page_articles = generate_front_page_articles
+    @shared_article = SharedArticle.new
 
     respond_to do |format|
       format.html

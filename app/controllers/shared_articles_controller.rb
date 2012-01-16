@@ -1,4 +1,3 @@
-include 'net/http'
 
 class SharedArticlesController < ApplicationController
   # GET /shared_articles

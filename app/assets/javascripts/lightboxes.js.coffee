@@ -3,6 +3,8 @@ $ ->
   $("#share-this-header").click ->
     $("#share-this-gloss").show()
     $("#share-this-lightbox").show()
+    $("input#users").val("")
+    $("ul#shared_with").html("")
     
   $("#users-header").click ->
     $("#users-gloss").show()
@@ -33,3 +35,16 @@ $ ->
     $("#users-lightbox").hide()
     $("#share-this-gloss").show()
     $("#share-this-lightbox").show()
+  
+  $(".close-share-box-button").click ->
+    alert "HI"
+    $("#share-this-gloss").hide()
+    $("#share-this-lightbox").hide()
+    $("#users-gloss").show()
+    $("#users-lightbox").show()
+    
+  $(".close-box").click ->
+    $("#share-this-gloss").hide()
+    $("#share-this-lightbox").hide()
+    $("#users-gloss").hide()
+    $("#users-lightbox").hide()
