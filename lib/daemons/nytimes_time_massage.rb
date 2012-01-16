@@ -1,4 +1,4 @@
-class TimeMassage
+class NYTimesTimeMassage
 
   attr_accessor :year, :month, :day, :hour, :minute, :second, :offset
 

@@ -20,8 +20,8 @@ initBindings = () ->
     .bind('ajax:complete', () ->
     )
 
-  data = "/users/search.json"
 
+  data = "/users/search.json"
   $("input#share_with").autocomplete(
     source: data
     minLength: 2

@@ -3,6 +3,8 @@
 # require json so that we can parse the result.
 require 'net/http'
 require 'json'
+require 'rexml/document'
+require './lib/daemons/raw_article'
 
 class Request
   
@@ -17,6 +19,11 @@ class Request
   # the request.
   attr_accessor :query_string
   
+  # INITIALIZE
+  # Set up the @articles array
+  def initialize
+    @articles = []
+  end
   
   # GET SOME
   # Go forth and make an http get request!

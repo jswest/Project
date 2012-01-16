@@ -1,30 +1,10 @@
-# REQUIRE
-# net/http so that we can make a get request of the nytimes api
-# json so that we can parse the result.
-require 'net/http'
-require 'json'
-
-
-# RAW ARTICLE CLASS
-# This class creates a RawArticle object, whose function is to hold all of the
-# raw information we get from the nytimes API.
-class RawArticle
-  attr_accessor :section, :title, :abstract, :body, :url, :byline, :published_date, :updated_date, :kicker, :subhead, :material_type_facet, :des_facet, :org_facet, :per_facet, :geo_facet
-  
-end
-
-
+require './lib/daemons/request'
 
 # NEWS REQUEST CLASS
 # This class creates a NewsRequest object, whose function is to make a request from
 # the NYTimes NewsWire API.
-class NewsRequest
-  
-  # INSTANCE VARIABLES
-  # The response and articles variables deal with the response from the API.
-  # @response holds the raw response, @articles holds the parsed articles.
-  attr_accessor :response, :articles
-  
+class NYTimesNewsRequest < Request
+
   # These hold the various changable portions of the query string. All except @section have
   # default values. @section must be passed in on creation of the object
   attr_accessor :version, :source, :section, :response_type, :api_key
@@ -46,14 +26,6 @@ class NewsRequest
   # CREATE THE QUERY STRING
   def create_query_string
     @query_string = "http://api.nytimes.com/svc/news/#{@version}/content/#{@source}/#{@section}/.#{@response_type}?api-key=#{@api_key}"
-  end
-
-  
-  # GET SOME
-  # Go forth and make a Get request!
-  def get_some
-    uri = URI.parse( @query_string )
-    @response = Net::HTTP.get_response( uri )
   end
   
   
@@ -121,7 +93,7 @@ end
 # SEARCH REQUEST CLASS
 # This class creates a SearchRequest object, whose function is to make a request a
 # specific article from the NYTimes Search API.
-class SearchRequest
+class NYTimesSearchRequest < Request
   
   
   # INSTANCE VARIABLES
@@ -130,7 +102,7 @@ class SearchRequest
   # and the wrappers contain the odd surrounding text for the values to make the string an actual query
   # string. The URI and response variables hold the net/http parsed uri and the response from the server
   # being queried.
-  attr_accessor :full_query, :base, :values, :uri, :response, :article_body
+  attr_accessor :full_query, :base, :values, :uri, :article_body
   
   
   # INITIALIZER
@@ -167,19 +139,12 @@ class SearchRequest
   def generate_query
     
     # set up for the loop
-    @full_query = @base
-    @full_query += @wrapped_values[:format] + @wrapped_values[:query_string] + @wrapped_values[:rank] + @wrapped_values[:api_key]
+    @query_string = @base
+    @query_string += @wrapped_values[:format] + @wrapped_values[:query_string] + @wrapped_values[:rank] + @wrapped_values[:api_key]
     
   end
      
-  
-  # GET SOME
-  # Go forth and make your http get request!   
-  def get_some
-    @uri = URI.parse( @full_query )
-    @response = Net::HTTP.get_response( @uri )
-    puts @response
-  end
+
   
   # PARSE
   # This parses the response and saves the response in the @article_body variable.
@@ -193,6 +158,10 @@ class SearchRequest
     
     end
     
+  end
+  
+  def display
+    puts @article_body
   end
 
 end

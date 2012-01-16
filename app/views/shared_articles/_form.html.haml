@@ -1,5 +1,6 @@
 %h3
   = link_to @article.title, @article.url if @article.present?
+%p#notice
 = form_tag "/shared_articles", :remote => true, :id => "new_shared_article", :method => "post" do
   -if @shared_article.errors.any?
     #error_explanation
@@ -23,8 +24,9 @@
     %tr
       %th
       %td
-        %ul#shared_with
-          %li= @user.firstname + @user.lastname 
+        /%ul#shared_with
+        /%li= @user.firstname + @user.lastname 
+        /%li= @shared_with.user.firstname + @shared_with.user.lastname
     %tr
       %th
         = label_tag :blurb
