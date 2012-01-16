@@ -4,6 +4,7 @@ class Article < ActiveRecord::Base
 
   #validates_presence_of :title
   validates_presence_of :url
+  attr_accessible :classes
   belongs_to :user
   
   before_save :add_title
@@ -15,5 +16,18 @@ class Article < ActiveRecord::Base
       self.title = response.body.scan(/<(TITLE|title)>(.*)<\/(TITLE|title)>/)[0][1]
     end
   end
-  
+
+  # CSS classes for displaying the article on the frontpage
+  def self.classes
+  [
+    "venti",
+    "tall",
+    "tall",
+    "grande-vertical",
+    "grande-horizonal",
+    "tall",
+    "tall"
+  ]
+  end
+
 end

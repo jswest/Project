@@ -14,6 +14,7 @@ Project::Application.routes.draw do
   match 'sessions/destroy' => 'sessions#destroy'
   match 'sessions/new' => 'sessions#new'
   match 'sessions/create' => 'sessions#create'
+  match 'frontpage' => 'front_page#index'
   
   root :to => 'users#new'
   

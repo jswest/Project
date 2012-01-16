@@ -1,37 +1,4 @@
 class UsersController < ApplicationController
-
-
-  def generate_front_page_articles
-    @front_page_articles = []
-    @received_articles = @user.received_articles.limit(3)
-    if !@received_articles.empty?
-      @received_articles.each do |received_article|
-        @front_page_articles.push( {
-          :shared_by => received_article.shared_by.firstname,
-          :article => received_article.article,
-          :classes => "tall shared"
-        } )
-      end
-    end
-    nytimes_articles = Article.where( :first_paragraph.present? )
-    while @front_page_articles.length < 7 do
-      article = nytimes_articles.sample
-      @front_page_articles.push( {
-        :shared_by => "The New York Times", 
-        :article => article,
-        :classes => "tall nytimes tall-nytimes"
-      } )
-    end
-
-    return @front_page_articles   
-      
-  end
-
-
-
-
-
-  
   # force_ssl
   def index
     @users = User.all
@@ -56,74 +23,16 @@ class UsersController < ApplicationController
     end
   end
 
-
-
   def show
-    
-    @this_user = User.find_by_id(params[:id])
-    if is_signed_in?
-      @user = User.find( current_user.id )
-    else
-      @user = User.find( params[:id] )
-    end
-    
-    classes = [
-      "venti",
-      "tall",
-      "tall",
-      "grande-vertical",
-      "grande-horizonal",
-      "tall",
-      "tall"
-    ]
-    
-    @front_page_articles = []
-    @received_articles = @user.received_articles.limit(3)
-    
-    if @received_articles.present?
-      @received_articles.each do |received_article|
-        @front_page_articles.push( {
-          :shared_by => received_article.shared_by.firstname,
-          :article => received_article.article,
-          :classes => "tall shared"
-        } )
-      end
-    end
-    
-    while @front_page_articles.length < 7 do
-      @front_page_articles.push( {
-        :shared_by => "The New York Times", 
-        :article => Article.where( :first_paragraph.present? ).sample,
-        :classes => "tall nytimes tall-nytimes"
-      } )
-    end
-    
-
-    @front_page_articles = generate_front_page_articles
-
+    @user = User.find(params[:id])
     respond_to do |format|
-      format.html
-      format.json { render json: @user }
+      format.html { render @user }
     end
-    
   end
-    
-  def update_front_page
-    deleted_article = Article.find( params[:id] )
-    @front_page_articles.delete( deleted_article )
-    @front_page_articles.push( {
-      :shared_by => "The New York Times",
-      :article => Article.where( :first_paragraph.present? ).sample,
-      :classes => "tall nytimes tall-nytimes"
-    } )
-    render :partial => "front_page", :collection => @front_page_articles, :as => :article
-  end
-  
 
   def new
-    
     if is_signed_in?
-      return redirect_to :controller => "users", :action => "show", :id => @current_user.id
+      return redirect_to :controller => "front_page", :action => "index"
     end
     
     @user = User.new
