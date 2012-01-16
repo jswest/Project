@@ -37,15 +37,25 @@ class FrontPageController < ApplicationController
         } )
       end
     end
-    nytimes_articles = Article.where( :first_paragraph.present? )
+    nytimes_articles = Article.find_all_by_source( "The New York Times" )
     while front_page_articles.length < 7 do
       article = nytimes_articles.sample
       front_page_articles.push( {
-        :shared_by => "The New York Times",
+        :shared_by => article.source,
         :article => article,
         :classes => "short nytimes"
       } )
     end
+    msnbc_articles = Article.find_all_by_source( "MSNBC" )
+    while front_page_articles.length < 8 do
+      article = msnbc_articles.sample
+      front_page_articles.push( {
+        :shared_by => article.source,
+        :article => article,
+        :classes => "short msnbc"
+      } )
+    end
+    
 
     return front_page_articles
   end

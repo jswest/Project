@@ -2,8 +2,7 @@
   .close-box x
   %article{ :class => "#{article[:classes]} article-guts" }
     %h3= "Shared by #{article[:shared_by]}"
-    %h1
-      = link_to article[:article].title, article[:article].url
+    %h1= link_to article[:article].title, article[:article].url
     - if article[:article].first_paragraph.present?
       %p= raw article[:article].first_paragraph.truncate(300)
   %span.share-this-button Share This

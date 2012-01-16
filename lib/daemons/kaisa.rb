@@ -37,6 +37,7 @@ def kaisa
       db_article.title = article.title
       db_article.first_paragraph = article.body
       db_article.url = article.url
+      db_article.source = "MSNBC"
       
       # Save it!
       db_article.save!
