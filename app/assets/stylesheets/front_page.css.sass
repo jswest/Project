@@ -18,9 +18,8 @@ $real-full-plus-one: $full-plus-one - ($padding-size * 2) - ($border-width * 2) 
 
 // DESTROY THIS CODE LATER
 section#front-page
-  background-color: rgb(245,245,245)
   display: block
-  margin: 50px auto
+  margin: 0 auto
   position: relative
   width: $full-size
   height: $full-plus-one
@@ -34,6 +33,20 @@ section#front-page
   margin: 20px
   padding: $padding-size
   position: absolute
+  article
+    overflow: hidden
+    h3
+      font-size: 15px
+      margin-bottom: 10px
+      text-align: center
+      text-transform: uppercase
+    h1
+      font-size: 50px
+      line-height: 100%
+    p
+      font-size: 13px
+    img
+      width: $real-one-third - 40px
 .shared
   background-color: rgb(200,210,220)
 

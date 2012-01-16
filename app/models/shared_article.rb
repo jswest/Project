@@ -1,3 +1,5 @@
+require 'net/http'
+
 class SharedArticle < ActiveRecord::Base
   belongs_to :article
   has_and_belongs_to_many :users, :uniq => true
@@ -15,4 +17,7 @@ class SharedArticle < ActiveRecord::Base
     shared_with.each{ |user| shared_article.users << user unless user.nil? }
     return shared_article
   end
+  
+
+  
 end

@@ -1,5 +1,6 @@
 %h3
   = link_to @article.title, @article.url if @article.present?
+%p#notice
 = form_tag "/shared_articles", :remote => true, :id => "new_shared_article", :method => "post" do
   -if @shared_article.errors.any?
     #error_explanation
