@@ -33,7 +33,7 @@ class FrontPageController < ApplicationController
         front_page_articles.push( {
           :shared_by => received_article.shared_by.firstname,
           :article => received_article.article,
-          :classes => "tall shared"
+          :classes => "short shared"
         } )
       end
     end
@@ -43,7 +43,7 @@ class FrontPageController < ApplicationController
       front_page_articles.push( {
         :shared_by => "The New York Times",
         :article => article,
-        :classes => "tall nytimes tall-nytimes"
+        :classes => "short nytimes"
       } )
     end
 

@@ -1,3 +1,5 @@
+@import mixins
+
 //@import mixins
 $full-size: 960px
 $one-third: $full-size / 3
@@ -47,13 +49,16 @@ section#front-page
     p
       font-size: 13px
     img
-      width: $real-one-third - 40px
+      width: $real-one-third - 0px
 .shared
   background-color: rgb(200,210,220)
 
 .short
   width: $real-one-third
-  height: $real-one-third 
+  height: $real-one-third
+  article
+    h1
+      font-size: 30px
 .tall-horizontal
   width: $real-two-third
   height: $real-one-third
