@@ -1,3 +1,5 @@
+.x-box-lightbox x
+%h1.share-an-article-header Share an Article
 %h3
   = link_to @article.title, @article.url if @article.present?
 %p#notice
@@ -38,5 +40,3 @@
       %td
       %td
         = submit_tag 'Share', :class => "submit"
-        
-%span.close-share-box-button Back

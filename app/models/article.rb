@@ -13,7 +13,7 @@ class Article < ActiveRecord::Base
     if self.title.nil?  
       uri = URI.parse( self.url )
       response = Net::HTTP.get_response( uri )   
-      self.title = response.body.scan(/<(TITLE|title)>(.*)<\/(TITLE|title)>/)[0][1]
+      self.title = response.body.scan(/<(TITLE|title)>(.*)<\/(TITLE|title)>/)[0][1] rescue nil
     end
   end
 
