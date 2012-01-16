@@ -14,6 +14,8 @@ initBindings = () ->
     .bind('ajax:success', (evt, data) ->
       $("#notice").html("Link shared.")
       initBindings()
+      $("#share-this-gloss").hide()
+      $("#share-this-lightbox").hide()
     )
     .bind('ajax:error', (xhr, status, error) ->
     )

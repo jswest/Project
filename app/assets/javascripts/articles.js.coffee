@@ -23,10 +23,12 @@ initBindings = () ->
     )
     .bind('ajax:success', (evt, data) ->
       $("#form-pane").html(data)
-      $("#notice").html("Link shared! Share another?")
       initBindings()
+      $("#share-this-gloss").hide()
+      $("#share-this-lightbox").hide()
     )
     .bind('ajax:error', (xhr, status, error) ->
     )
     .bind('ajax:complete', () ->
+      $()
     )

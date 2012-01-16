@@ -1,11 +1,10 @@
 $ ->
   
   $("#share-this-header").click ->
+    $.clear_out
     $("#share-this-gloss").show()
     $("#share-this-lightbox").show()
-    $("input#users").val("")
-    $("ul#shared_with").html("")
-    
+
   $("#users-header").click ->
     $("#users-gloss").show()
     $("#users-lightbox").show()
@@ -35,16 +34,19 @@ $ ->
     $("#users-lightbox").hide()
     $("#share-this-gloss").show()
     $("#share-this-lightbox").show()
-  
-  $(".close-share-box-button").click ->
-    alert "HI"
-    $("#share-this-gloss").hide()
-    $("#share-this-lightbox").hide()
-    $("#users-gloss").show()
-    $("#users-lightbox").show()
     
-  $(".close-box").click ->
+  $(".x-box-lightbox").click ->
+    alert "HI"
     $("#share-this-gloss").hide()
     $("#share-this-lightbox").hide()
     $("#users-gloss").hide()
     $("#users-lightbox").hide()
+    
+  clear_out = () ->
+    $("input#url").val("")
+    $("input#users").val("")
+    $("input#share_with").val("")
+    $("ul#shared_with").html("")
+    $("input#blurb").val("")
+    $("input#user_id").val("")
+    $("input#article_id").val("")
