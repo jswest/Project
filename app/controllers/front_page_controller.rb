@@ -28,23 +28,28 @@ class FrontPageController < ApplicationController
   def generate_front_page_articles
     front_page_articles = []
     received_articles = @current_user.received_articles.limit(3)
+    sizes = [ 4, 3, 2, 1, 1, 1 ]
     if received_articles.any?
       received_articles.each do |received_article|
         front_page_articles.push( {
           :shared_by => received_article.shared_by.firstname,
           :article => received_article.article,
-          :classes => "short shared"
+          :classes => "shared",
+          :size => sizes.first
         } )
+        sizes.delete_at( 0 )
       end
     end
     nytimes_articles = Article.find_all_by_source( "The New York Times" )
     while front_page_articles.length < 7 do
       article = nytimes_articles.sample
       front_page_articles.push( {
-        :shared_by => article.source rescue nil,
+        :shared_by => article.source,
         :article => article,
-        :classes => "short nytimes"
+        :classes => "nytimes",
+        :size => sizes.first
       } )
+      sizes.delete_at( 0 )
     end
     msnbc_articles = Article.find_all_by_source( "MSNBC" )
     while front_page_articles.length < 8 do
