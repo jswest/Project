@@ -7,7 +7,7 @@ class SharedArticlesController < ApplicationController
     @shared_articles = @current_user.received_articles
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @shared_articles }
     end
   end
@@ -37,7 +37,7 @@ class SharedArticlesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html{ render :partial => "new" } # new.html.erb
+      format.html
       format.json { render json: @shared_article }
     end
   end

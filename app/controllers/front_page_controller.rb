@@ -41,7 +41,7 @@ class FrontPageController < ApplicationController
     while front_page_articles.length < 7 do
       article = nytimes_articles.sample
       front_page_articles.push( {
-        :shared_by => article.source,
+        :shared_by => article.source rescue nil,
         :article => article,
         :classes => "short nytimes"
       } )

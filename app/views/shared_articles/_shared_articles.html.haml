@@ -1,13 +1,16 @@
-%h1.shared-articles-header  Shared Articles
-%ol#shared-article-list
-  - @current_user.received_articles.order("created_at DESC").limit(10).each do |shared_article|
-    %li.shared-article
-      .close-box x
-      %header
-        %hgroup
-          %h3= link_to "#{shared_article.shared_by.firstname} shared", shared_article.shared_by
-          %h2= link_to shared_article.article.title, shared_article.article.url
-      %p.blurb= shared_article.blurb
-      %footer
-        %p.share-this= link_to "Share This", :controller => "articles", :action => :new, :id => @current_user.id
-  .clear
+%h1.shared-articles-header  Received Articles
+-if @shared_articles.any?
+  %ol#shared-article-list
+    - @current_user.received_articles.order("created_at DESC").limit(10).each do |shared_article|
+      %li.shared-article
+        .close-box x
+        %header
+          %hgroup
+            %h3= link_to "#{shared_article.shared_by.firstname} shared", shared_article.shared_by
+            %h2= link_to shared_article.article.title, shared_article.article.url
+        %p.blurb= shared_article.blurb
+        %footer
+          %p.share-this= link_to "Share This", :controller => "articles", :action => :new, :id => @current_user.id
+    .clear
+-else
+  %p#notice You have none. Invite some friends to share with you!
