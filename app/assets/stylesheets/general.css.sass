@@ -11,7 +11,8 @@ th,
 input,
 label
   font-family: $p_fonts
-
+p#notice
+  text-align: center
 
 h1
   color: $h1_color
@@ -31,6 +32,7 @@ th
 form
   background: $form_color
   border-radius: 20px
+  @include boxshadow
   margin: 0 auto
   padding: 10px
   width: ($full_width / 2) - 30px

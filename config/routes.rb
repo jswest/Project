@@ -2,9 +2,9 @@ Project::Application.routes.draw do
   resources :friendships
 
   resources :groups
-  match 'shared_articles/sent' => 'shared_articles#sent'
-
   resources :saved_articles
+
+  match 'shared_articles/sent' => 'shared_articles#sent'
   resources :shared_articles
   resources :articles
   match 'users/search' => 'users#search'

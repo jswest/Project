@@ -7,8 +7,8 @@ h1.all-users-header
   
 ol#all-users-list
   margin: 0 auto
-  margin-left: 10px
-  margin-right: 10px
+  width: $lightbox_width - 40px
+  height: auto
 
   li
     background-color: $header-color
@@ -16,10 +16,9 @@ ol#all-users-list
     float: left
     margin-bottom: 25px
     margin-left: 10px
-    margin-right: 25px
-    padding: 14px
+    padding: 15px 0
     position: relative
-    width: 200px
+    width: (($lightbox_width - 40px) / 2) - 20px
     height: 50px
     h2
       font-family: "Bebas Neue"

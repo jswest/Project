@@ -1,10 +1,10 @@
 $full_width: 960px
 @mixin align_center
-	margin: 0 auto
+  margin: 0 auto
 @mixin align_left
-	float: left
+  float: left
 @mixin align_right
-	float: right
+  float: right
 
 $root_header_color: rgb(200,200,200)
 $header_color: rgb(200,200,200)
@@ -14,7 +14,15 @@ $form_color: rgb(200,200,200)
 $h1_color: rgb(50,50,50)
 $h1_fonts: "Bebas Neue"
 @mixin header_general
-	color: $h1_color
-	font-family: $h1_fonts
+  color: $h1_color
+  font-family: $h1_fonts
 
 $p_fonts: "helvetica"
+
+@mixin boxshadow
+  -moz-box-shadow: 0px 1px 10px
+  -webkit-box-shadow: 0px 1px 10px
+  box-shadow: 0px 1px 10px
+  
+$lightbox_width: 645px
+  

@@ -108,6 +108,7 @@ def pantalaimon
         db_article.abstract = article.abstract
         db_article.first_paragraph = article.body
         db_article.url = article.url
+        db_article.source = "The New York Times"
       
         # Save it! (unless it doesn't have a first paragraph)
         if db_article.first_paragraph.present?

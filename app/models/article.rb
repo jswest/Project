@@ -10,9 +10,13 @@ class Article < ActiveRecord::Base
   before_save :add_title
   
   def add_title
-    if self.title.nil?  
+    if self.title.nil?
+      self.url = self.url.split( "?" )[0]
       uri = URI.parse( self.url )
-      response = Net::HTTP.get_response( uri )   
+      response = Net::HTTP.get_response( uri )
+      while response.code == "301" || response.code == "302"
+        response = Net::HTTP.get_response( URI.parse( response.header['location'] ) )
+      end
       self.title = response.body.scan(/<(TITLE|title)>(.*)<\/(TITLE|title)>/)[0][1] rescue nil
     end
   end
