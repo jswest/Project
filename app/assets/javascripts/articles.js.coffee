@@ -28,7 +28,7 @@ initBindings = () ->
       $("#share-this-lightbox").hide()
     )
     .bind('ajax:error', (xhr, status, error) ->
+        $("#notice").html("Please enter a valid URL and friend!")
     )
     .bind('ajax:complete', () ->
-      $()
     )

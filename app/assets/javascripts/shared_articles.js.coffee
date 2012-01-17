@@ -18,6 +18,7 @@ initBindings = () ->
       $("#share-this-lightbox").hide()
     )
     .bind('ajax:error', (xhr, status, error) ->
+      alert "ERroR"
     )
     .bind('ajax:complete', () ->
     )
