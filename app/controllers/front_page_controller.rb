@@ -34,30 +34,31 @@ class FrontPageController < ApplicationController
         front_page_articles.push( {
           :shared_by => received_article.shared_by.firstname,
           :article => received_article.article,
-          :classes => "shared",
+          :classes => "shared #{Article.classes[sizes.first].first}",
           :size => sizes.first
         } )
         sizes.delete_at( 0 )
       end
     end
     nytimes_articles = Article.find_all_by_source( "The New York Times" )
-    while front_page_articles.length < 7 do
+    while front_page_articles.length < 5 do
       article = nytimes_articles.sample
       front_page_articles.push( {
         :shared_by => article.source,
         :article => article,
-        :classes => "nytimes",
+        :classes => "nytimes #{Article.classes[sizes.first].first}",
         :size => sizes.first
       } )
       sizes.delete_at( 0 )
     end
     msnbc_articles = Article.find_all_by_source( "MSNBC" )
-    while front_page_articles.length < 8 do
+    while front_page_articles.length < 6 do
       article = msnbc_articles.sample
       front_page_articles.push( {
         :shared_by => article.source,
         :article => article,
-        :classes => "short msnbc"
+        :classes => "msnbc #{Article.classes[sizes.first].first}",
+        :size => sizes.first
       } )
     end
     

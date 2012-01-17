@@ -25,8 +25,8 @@ class Article < ActiveRecord::Base
   def self.classes
   {
     4 => ["venti"],
-    2 => ["tall-vertical", "tall-horizontal"],
-    3 => ["grande-vertical","grande-horizonal"],
+    2 => ["tall-vertical"],
+    3 => ["grande-vertical"],
     1 => ["short"]
   }
   end
