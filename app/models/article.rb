@@ -23,15 +23,12 @@ class Article < ActiveRecord::Base
 
   # CSS classes for displaying the article on the frontpage
   def self.classes
-  [
-    "venti",
-    "tall",
-    "tall",
-    "grande-vertical",
-    "grande-horizonal",
-    "tall",
-    "tall"
-  ]
+  {
+    4 => ["venti"],
+    2 => ["tall-vertical"],
+    3 => ["grande-vertical"],
+    1 => ["short"]
+  }
   end
 
 end
