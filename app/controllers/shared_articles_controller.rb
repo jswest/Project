@@ -30,14 +30,18 @@ class SharedArticlesController < ApplicationController
     
     if params[:article_id].present?
       @article=Article.find(params[:article_id]) rescue nil
+    else
+      flash.now[:notice] = 'Please enter a valid URL'
     end
     
     if params[:user_id].present?
       @user=User.find(params[:user_id]) rescue nil
+    else
+      flash.now[:notice] = 'Please enter a valid user'
     end
 
     respond_to do |format|
-      format.html
+      format.html {render :partial => "new"}
       format.json { render json: @shared_article }
     end
   end

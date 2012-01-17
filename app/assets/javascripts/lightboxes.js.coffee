@@ -1,7 +1,6 @@
 $ ->
   initBindings()
   $("#share-this-header").click ->
-    clear_out()
     $("#share-this-gloss").show()
     $("#share-this-lightbox").show()
 
@@ -63,6 +62,7 @@ initBindings = () ->
     .bind('ajax:beforeSend', () ->
     )
     .bind('ajax:success', (evt, data) ->
+      $("#share-this-lightbox").html(data)
       $("#notice").html("Link shared.")
       initBindings()
       $("#share-this-gloss").hide()

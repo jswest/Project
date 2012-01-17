@@ -7,7 +7,7 @@ class Article < ActiveRecord::Base
   attr_accessible :classes
   belongs_to :user
   
-  before_save :add_title
+  #before_save :add_title
   
   def add_title
     if self.title.nil?
