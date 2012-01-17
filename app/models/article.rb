@@ -9,7 +9,7 @@ class Article < ActiveRecord::Base
   
   before_save :add_title
   before_save :get_article
-    
+
   def add_title
     if self.title.nil?
       self.url = self.url.split( "?" )[0]
