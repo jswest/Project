@@ -62,7 +62,7 @@ class SharedArticlesController < ApplicationController
         format.html { render :partial => 'articles/form', notice: 'Article was succesfully shared!' }
         format.json { render json: @shared_article, status: :created, location: @shared_article }
       else
-        format.html { render action: "new" }
+        format.html { render :partial => "new" }
         format.json { render json: @shared_article.errors, status: :unprocessable_entity }
       end
     end

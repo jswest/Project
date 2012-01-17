@@ -1,6 +1,7 @@
 $ ->
   initBindings()
   $("#share-this-header").click ->
+    clear_out()
     $("#share-this-gloss").show()
     $("#share-this-lightbox").show()
 
@@ -50,6 +51,7 @@ $ ->
     $("input#blurb").val("")
     $("input#user_id").val("")
     $("input#article_id").val("")
+    $("h3#article-title").html("")
 
 
   addUser = (message) ->

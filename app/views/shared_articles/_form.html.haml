@@ -1,10 +1,10 @@
 .x-box-lightbox x
 %h1.share-an-article-header Share an Article
-%h3
+%h3#article-title
   = link_to @article.title, @article.url if @article.present?
 %p#notice
 = form_tag "/shared_articles", :remote => true, :id => "new_shared_article", :method => "post" do
-  -if @shared_article.errors.any?
+  -if @shared_article.present? && @shared_article.errors.any?
     #error_explanation
       %h2= "#{pluralize(@shared_article.errors.count, "error")} prohibited this article from being shared:"
       %ul
