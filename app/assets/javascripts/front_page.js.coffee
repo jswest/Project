@@ -8,7 +8,7 @@ $ ->
 
 position_articles = () ->
   articles = sort_by_size( $(".front-page-article-wrapper") )
-  grid = [[0,0,0,0],[0,0,0,0],[0,0,0,0]]
+  grid = [[0,0,0],[0,0,0],[0,0,0],[0,0,0]]
 
   for article in articles
     fits = false
