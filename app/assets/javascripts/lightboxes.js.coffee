@@ -60,8 +60,10 @@ $ ->
 
 initBindings = () ->
   #alert "INIT"
-  $("form#new_share")
+  $("form#new_shared_article")
     .bind('ajax:beforeSend', () ->
+      alert "Before Send"
+      $('input#share-an-article-button').hide
     )
     .bind('ajax:success', (evt, data) ->
       $("#share-this-lightbox").html(data)
@@ -72,6 +74,7 @@ initBindings = () ->
     )
     .bind('ajax:error', (xhr, status, error) ->
       alert "ERroR"
+      $('input#share-an-article-button').show
     )
     .bind('ajax:complete', () ->
     )

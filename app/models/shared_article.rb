@@ -12,7 +12,7 @@ class SharedArticle < ActiveRecord::Base
     shared_article = SharedArticle.new
     shared_article.article_id = article.id
     shared_article.blurb = params[:blurb]
-    shared_article.shared_by = User.find(params[:user_id]) rescue nil
+    shared_article.shared_by = User.find(params[:shared_by])
     shared_with = params[:users].split(',').map(&:strip).select{|s| !s.blank?}.map{|id| User.find(id) rescue nil}
     shared_with.each{ |user| shared_article.users << user unless user.nil? }
     return shared_article

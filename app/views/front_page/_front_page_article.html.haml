@@ -5,5 +5,5 @@
     - unless article[:article][:source] == "MSNBC"
       %h1= link_to article[:article].title, article[:article].url
     - if article[:article].first_paragraph.present?
-      %p= raw article[:article].first_paragraph.truncate(300)
+      %p= raw article[:article].first_paragraph
   %span.share-this-button Share This

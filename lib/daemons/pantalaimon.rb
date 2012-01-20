@@ -13,12 +13,9 @@ def pantalaimon
   # PICK SECTIONS
   # Here are sections from which we're grabbing articles
   sections = [
-    "arts",
-    "books",
     "business",
     "magazine",
     "news",
-    "science",
     "washington",
     "opinion"
   ]

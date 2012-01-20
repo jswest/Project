@@ -34,7 +34,7 @@
       %td
         = text_area_tag :blurb
     .field
-      = hidden_field_tag :user_id, @current_user ? @current_user.id : 1
+      = hidden_field_tag :shared_by, @current_user.id #? @current_user.id : 1
       = hidden_field_tag :article_id, @article ? @article.id : ""
     %tr
       %td
